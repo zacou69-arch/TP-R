@@ -46,3 +46,38 @@ corrplot(matriceCor, method="color",
 
 resultat = drivers[,c("Driver","Weight")]
 View(resultat)
+
+resultat = drivers[ , -c(2,3)]
+
+
+resultat = drivers[ , c("Driver", "Acceleration", "Weight")]
+View(resultat)
+
+
+
+resultat = drivers[ c(3,12,32) , ]
+View(resultat)
+
+resultat = drivers[ c(32,3,12) , ]
+View(resultat)
+
+
+
+rang = order(drivers$Weight)
+resultat = drivers[ rang  , c("Driver", "Weight") ]
+
+
+rang = order(drivers$Acceleration, decreasing = TRUE)
+resultat = drivers[ rang  , c("Driver", "Acceleration") ]
+View(resultat)
+
+
+
+rang = order(drivers$Acceleration, drivers$Weight, decreasing = c(TRUE,FALSE))
+resultat = drivers[ rang  , c("Driver", "Acceleration","Weight") ]
+View(resultat)
+
+help(subset)
+topDriver = subset(x = drivers,
+                   subset = Acceleration == max(Acceleration), 
+                   select = c("Driver","Acceleration"))
